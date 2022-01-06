@@ -14,6 +14,8 @@ import * as PAGES from 'constants/pages';
 import {
   fetchUser,
 } from '../actions/user';
+import EntityEdit from "../../pageProviders/EntityEdit";
+import EntityList from "../../pageProviders/EntityList";
 
 const App = () => {
   const [state, setState] = useState({
@@ -41,6 +43,13 @@ const App = () => {
               <Route path={`/${PAGES.INITIAL}`}>
                 <PageInitial />
               </Route>
+              <Route path={`/${PAGES.ENTITY_LIST}`}>
+                <EntityList />
+              </Route>
+              <Route path={`/${PAGES.ENTITY_EDIT}`}>
+                <EntityEdit />
+              </Route>
+
               <Redirect from="*" to={`/${PAGES.INITIAL}`} />
             </Switch>
         )}

@@ -11,20 +11,14 @@ const EntityList = () => {
 
     const dispatch = useDispatch()
     const {
-        cash,
+        studentsList,
     } = useSelector(({ studentsReducer })=> studentsReducer);
-    console.log(cash)
-
-    const addCash = () => {
-      dispatch({type:"ADD_CASH", payload: 5})
-    }
-    const getCash = () => {
-      dispatch({type:"GET_CASH", payload: 5})
-    }
 
     const [fetchStudents, isStudentsLoading, studentsError] = useFetching(async () => {
         const response = await StudentService.getAll();
         setStudents(response.data);
+        dispatch({type:"ADD_STUDENTS", payload: response.data})
+        console.log(studentsList)
     })
 
     const [students, setStudents] = useState([{}])
@@ -34,14 +28,6 @@ const EntityList = () => {
 
     return (
         <div>
-
-            <div>{cash}</div>
-            <div style={{display: 'flex'}}>
-                <Button onClick={()=> addCash()}>Пополнить счет</Button>
-                <Button onClick={()=> getCash()}>Снять со счета</Button>
-            </div>
-
-
             <Paper variant="outlined" square/>
             <h1>Студенты</h1>
             <Button onClick={fetchStudents} variant="outlined">Обновить список</Button>

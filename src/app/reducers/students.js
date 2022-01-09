@@ -7,16 +7,17 @@ import {createStore} from "redux";
 
 
 const initialState = {
-    cash: 5,
+    studentsList: [],
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case "ADD_CASH":
-            return {...state, cash: state.cash + action.payload}
-        case "GET_CASH":
-            return {...state, cash: state.cash - action.payload}
-        default: return state;
+        case "ADD_STUDENTS":
+            return {...state, studentsList: [...action.payload]}
+        // case "GET_CASH":
+        //     return {...state, cash: state.cash - action.payload}
+        default:
+            return state;
     }
 }
 

@@ -90,7 +90,7 @@ const Header = () => {
             value={locationSearch.lang}
           >
             {Object.values(languages).map(langCode => (
-              <MenuItem value={langCode}>
+              <MenuItem value={langCode} key={langCode}>
                 <Typography>
                   {INTERFACE_LANGUAGES[langCode]}
                 </Typography>

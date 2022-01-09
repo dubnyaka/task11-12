@@ -1,0 +1,8 @@
+
+.entity__buttons{
+    display: none;
+}
+
+.entity:hover .entity__buttons{
+    display: block;
+}

@@ -29,8 +29,9 @@ const Initial = ({
   return (
     <div className={classes.container}>
       <div className="navbar__links">
-        <Link to={"/" + ENTITY_LIST}>Список сущностей</Link>
-        <Link to={"/" + ENTITY_EDIT}>Посты</Link>
+        <Link to="/entityList">Список сущностей</Link>
+        <Link to="/entityEdit/5">Посты</Link>
+        {/*<Link to="/entityEdit">РедактПоста</Link>*/}
       </div>
       {/*{canSeeList && availableItems.map((item, index) => (*/}
       {/*  <Link*/}

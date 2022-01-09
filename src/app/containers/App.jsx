@@ -46,6 +46,9 @@ const App = () => {
               <Route path={`/${PAGES.ENTITY_LIST}`}>
                 <EntityList />
               </Route>
+              <Route path={`/${PAGES.ENTITY_EDIT}/:id`}>
+                <EntityEdit />
+              </Route>
               <Route path={`/${PAGES.ENTITY_EDIT}`}>
                 <EntityEdit />
               </Route>

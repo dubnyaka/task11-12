@@ -12,12 +12,12 @@ const EntityList = () => {
     const dispatch = useDispatch()
     const {
         studentsList,
-    } = useSelector(({ studentsReducer })=> studentsReducer);
+    } = useSelector(({studentsReducer}) => studentsReducer);
 
     const [fetchStudents, isStudentsLoading, studentsError] = useFetching(async () => {
         const response = await StudentService.getAll();
         setStudents(response.data);
-        dispatch({type:"ADD_STUDENTS", payload: response.data})
+        dispatch({type: "ADD_STUDENTS", payload: response.data})
         console.log(studentsList)
     })
 
@@ -33,6 +33,11 @@ const EntityList = () => {
             <Button onClick={fetchStudents} variant="outlined">Обновить список</Button>
             <Link to="/entityEdit" className="btn btn-primary">Создать</Link>
             <Paper/>
+
+            {students.length === 0
+                ? <h1>Нет студентов в бд</h1>
+                : <h1></h1>
+            }
 
             {isStudentsLoading
                 ? <CircularProgress/>
@@ -55,7 +60,7 @@ const EntityList = () => {
                             >
                                 Удалить
                             </Button>
-                            <Link to={"/entityEdit/"+stud.id} >Редактировать</Link>
+                            <Link to={"/entityEdit/" + stud.id}>Редактировать</Link>
                         </div>
                     </Card>
                 )}</div>

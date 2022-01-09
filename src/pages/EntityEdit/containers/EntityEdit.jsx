@@ -33,7 +33,10 @@ const EntityEdit = () => {
 
     const submitForm = () => {
         let bodyFormData = new FormData();
-        bodyFormData.append('id', params.id)
+
+        if(params.hasOwnProperty('id')){
+            bodyFormData.append('id', params.id)
+        }
         bodyFormData.append('firstName', firstName)
         bodyFormData.append('lastName', lastName)
         bodyFormData.append('group', group)

@@ -7,5 +7,19 @@
   "page.initial": "Главная",
   "password": "Пароль",
   "signIn": "Вход",
-  "signUp": "Регистрация"
+  "signUp": "Регистрация",
+  "entityList": "Список сущностей",
+  "entityEdit": "Редактирование сущности",
+  "students": "Студенты",
+  "create": "Создавать",
+  "updateList": "Обновите этот список",
+  "noStudentsInDB":"В базе данных нет студентов",
+  "firstName": "Имя",
+  "lastName": "Фамилия",
+  "id" : "id",
+  "delete": "Удалить",
+  "edit": "Редактировать",
+  "create/edit page": "страница Создания/Редактирования",
+  "GroupNumber": "Номер группы",
+  "save": "Сохранить"
 }

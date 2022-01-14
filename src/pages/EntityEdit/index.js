@@ -5,6 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import withAuthorities from 'decorators/withAuthorities';
 import reducer from './reducers/reducer';
 import EntityEdit from "./containers/EntityEdit";
+import {composeWithDevTools} from "redux-devtools-extension";
 
 const rootReducer = combineReducers({
     reducer,

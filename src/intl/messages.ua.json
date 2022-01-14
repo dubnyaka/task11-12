@@ -7,5 +7,19 @@
   "page.initial": "Main",
   "password": "Пароль",
   "signIn": "Вхiд",
-  "signUp": "Вихiд"
+  "signUp": "Вихiд",
+  "entityList": "Список сутностей",
+  "entityEdit": "Редагування сутності",
+  "students": "Студенти",
+  "create": "Створити",
+  "updateList": "Оновіть цей список",
+  "noStudentsInDB":"У базі даних немає студентів",
+  "firstName": "ім'я",
+  "lastName": "Прізвище",
+  "id" : "ID",
+  "delete": "видалити",
+  "edit": "редагувати",
+  "create/edit page": "сторінка Створення / редагування",
+  "GroupNumber": "Номер групи",
+  "save": "зберегти"
 }

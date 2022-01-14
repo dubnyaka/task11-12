@@ -7,5 +7,19 @@
   "page.initial": "Main",
   "password": "Password",
   "signIn": "Sign in",
-  "signUp": "Sign up"
+  "signUp": "Sign up",
+  "entityList": "Entity list",
+  "entityEdit": "Entity edit",
+  "students": "Students",
+  "create": "Create",
+  "updateList": "Update this list",
+  "noStudentsInDB":"There are no students in the database",
+  "firstName": "Name",
+  "lastName": "Lastname",
+  "id" : "id",
+  "delete": "Delete",
+  "edit": "Edit",
+  "create/edit page": "Create/Edit page",
+  "GroupNumber": "Group number",
+  "save": "Save"
 }

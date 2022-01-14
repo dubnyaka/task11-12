@@ -6,6 +6,8 @@ import Typography from 'components/Typography';
 import useAccessValidate from 'hooks/useAccessValidate';
 import {ENTITY_EDIT, ENTITY_LIST} from "../../../constants/pages";
 import {Button} from "@material-ui/core";
+import {useIntl} from "react-intl";
+
 
 const getClasses = makeStyles(() => ({
   container: {
@@ -26,9 +28,13 @@ const Initial = ({
     neededAuthorities: ['МОЖНО_ВОТ_ЭТУ_ШТУКУ'],
   });
 
+  const { formatMessage } = useIntl();
+
   return (
     <div className={classes.container}>
-      <Link to="/entityList" variant>Список сущностей</Link>
+      <Link to="/entityList" variant>{formatMessage({
+        id: 'entityList',
+      })}</Link>
       {/*{canSeeList && availableItems.map((item, index) => (*/}
       {/*  <Link*/}
       {/*    href={index % 2 === 0*/}

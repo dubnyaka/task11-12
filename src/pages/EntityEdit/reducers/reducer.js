@@ -1,15 +1,11 @@
 const initialState = {
-  availableItems: [
-    'как+выучить+js',
-    'somePath',
-    'Картинка',
-    'anotherPath',
-  ],
+  student: {},
 };
 
 export default (state = initialState, {type, payload}) => {
   switch (type) {
-
-    default: return state;
+    case "PUT_STUDENT":
+        return {...state, student: payload}
+      default: return state;
   }
 }

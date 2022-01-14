@@ -1,47 +1,59 @@
 import React, {useEffect, useState} from 'react';
-import StudentService from "../../../API/StudentService";
-import axios from "axios";
-import {useFetching} from "../../../hooks/useFetching";
 import {Button, Card, CircularProgress, Paper} from "@material-ui/core";
 import Link from "../../../components/Link";
 import {useDispatch, useSelector} from "react-redux";
-import studentsReducer from "../../../app/reducers/students";
+import {useIntl} from "react-intl";
 
 const EntityList = () => {
+    const {formatMessage} = useIntl();
+
 
     const dispatch = useDispatch()
-    const {
-        studentsList,
-    } = useSelector(({studentsReducer}) => studentsReducer);
+    const students = useSelector((state) => state.reducer.students)
 
-    const [fetchStudents, isStudentsLoading, studentsError] = useFetching(async () => {
-        const response = await StudentService.getAll();
-        setStudents(response.data);
-        dispatch({type: "ADD_STUDENTS", payload: response.data})
-        console.log(studentsList)
-    })
-
-    const [students, setStudents] = useState([{}])
     useEffect(() => {
-        fetchStudents();
+        loadStudents()
+        console.log(students)
     }, [])
+
+    const loadStudents = () => {
+        fetch('http://localhost:8080/rest/students')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                dispatch({type: "PUT_STUDENTS", payload: data})
+            });
+    }
+
+    const deleteStudent = (id) => {
+        fetch('http://localhost:8080/rest/students/' + id, {method: 'DELETE'})
+            .then(() => loadStudents());
+    }
+
 
     return (
         <div>
-            <Paper variant="outlined" square/>
-            <h1>Студенты</h1>
-            <Button onClick={fetchStudents} variant="outlined">Обновить список</Button>
-            <Link to="/entityEdit" className="btn btn-primary">Создать</Link>
-            <Paper/>
+            <Paper variant="outlined" square>
+                <h1>{formatMessage({
+                    id: 'students',
+                })}</h1>
+                <Button onClick={loadStudents} variant="outlined">{formatMessage({
+                    id: 'updateList',
+                })}</Button>
+                <Link to="/entityEdit" className="btn btn-primary">{formatMessage({
+                    id: 'create',
+                })}</Link>
 
-            {students.length === 0
-                ? <h1>Нет студентов в бд</h1>
-                : <h1></h1>
-            }
 
-            {isStudentsLoading
-                ? <CircularProgress/>
-                : <div>{students.map(stud =>
+                {students.length === 0
+                    ? <h1>{formatMessage({
+                        id: 'noStudentsInDB',
+                    })}</h1>
+                    : <h1></h1>
+                }
+
+                <div>{students.map(stud =>
                     <Card
                         className={"entity"}
                         variant="outlined"
@@ -51,20 +63,32 @@ const EntityList = () => {
                             key={stud.id}
                             style={{textAlign: "center"}}
                         >
-                            Id:{stud.id} Имя: {stud.firstName} Фамилия: {stud.lastName}
+                            {formatMessage({
+                                id: 'id',
+                            })}:{stud.id}
+                            {formatMessage({
+                                id: 'firstName',
+                            })}: {stud.firstName}
+                            {formatMessage({
+                                id: 'lastName',
+                            })}: {stud.lastName}
                         </p>
                         <div className="entity__buttons">
                             <Button onClick={() => {
-                                StudentService.deleteById(stud.id).then(fetchStudents)
+                                deleteStudent(stud.id)
                             }}
                             >
-                                Удалить
+                                {formatMessage({
+                                    id: 'delete',
+                                })}
                             </Button>
-                            <Link to={"/entityEdit/" + stud.id}>Редактировать</Link>
+                            <Link to={"/entityEdit/" + stud.id}>{formatMessage({
+                                id: 'edit',
+                            })}</Link>
                         </div>
                     </Card>
                 )}</div>
-            }
+            </Paper>
         </div>
     );
 };
